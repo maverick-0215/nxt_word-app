@@ -97,18 +97,3 @@ if st.button("Predict"):
     st.write("Predicted complete sentence:")
     st.write(complete_sentence)
 
-# Function to get image path based on user selections
-def get_visualization_path(emb_dim, block_size, activation_function):
-    if activation_function == 'relu':
-        return f"plots\plot_{emb_dim}_{block_size}_relu.png"
-    elif activation_function == 'tanh':
-        return f"plots\plot_{emb_dim}_{block_size}_tanh.png"
-    return None
-
-# Display t-SNE visualization based on selections
-if st.button("Visualize t-SNE Embeddings"):
-    tsne_image_path = get_visualization_path(emb_dim, block_size, activation_function)
-    if tsne_image_path and os.path.exists(tsne_image_path):
-        st.image(tsne_image_path, caption="t-SNE Visualization of Word Embeddings", use_column_width=True)
-    else:
-        st.write("Visualization image not found.")
